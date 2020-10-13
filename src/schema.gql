@@ -5,9 +5,8 @@
 type Restaurant {
   id: Float!
   name: String!
-  isVegan: Boolean!
+  isVegan: Boolean
   address: String!
-  ownersName: String!
 }
 
 type Query {
@@ -20,7 +19,6 @@ type Mutation {
 
 input CreateRestaurantDto {
   name: String!
-  isVegan: Boolean!
+  isVegan: Boolean
   address: String!
-  ownersName: String!
 }
