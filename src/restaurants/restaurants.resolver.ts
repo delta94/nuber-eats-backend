@@ -3,6 +3,7 @@ import { Restaurant } from './entities/restaurant.entity';
 import { CreateRestaurantDto } from './dtos/create-restaurant.dto';
 import { RestaurantsService } from './restaurants.service';
 import { create } from 'domain';
+import { UpdateRestaurantDto } from './dtos/update-restaurant.dto';
 
 @Resolver(of => Restaurant)
 export class RestaurantsResolver {
@@ -24,6 +25,18 @@ export class RestaurantsResolver {
   ): Promise<boolean> {
     try {
       await this.restaurantsService.createRestaurant(createRestaurantDto);
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+  }
+
+  @Mutation(returns => Boolean)
+  async updateRestaurant(
+    @Args() updateRestaurantDto: UpdateRestaurantDto,
+  ) {
+    try {
       return true;
     } catch (e) {
       console.log(e);
