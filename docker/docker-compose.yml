@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    volumes:
+      # コンテナの `/var/lib/postgresql/data` を、volume `db-data` にマウントする。
+      - "db-data:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5435:5432"
+volumes:
+  db-data:
+    external: true
