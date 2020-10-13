@@ -46,9 +46,9 @@ console.log(process.env.ENV);
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
+    JwtModule.forRoot(),
     UsersModule,
     CommonModule,
-    JwtModule,
   ],
   controllers: [AppController],
   providers: [AppService],
