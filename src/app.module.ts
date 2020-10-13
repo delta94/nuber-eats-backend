@@ -26,6 +26,7 @@ console.log(process.env.ENV);
         POSTGRES_USERNAME: Joi.string().required(),
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DATABASE: Joi.string().required(),
+        SECRET_KEY: Joi.string().required(),
       }),
     }),
     TypeOrmModule.forRootAsync({
