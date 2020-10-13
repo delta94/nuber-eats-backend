@@ -1,4 +1,4 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import { JwtService } from './jwt.service';
 import { UsersService } from '../users/users.service';
@@ -26,7 +26,8 @@ export class JwtMiddleware implements NestMiddleware {
         try {
           req['user'] = await this.usersService.findById(decoded['id']);
         } catch (e) {
-
+          console.log(e);
+          throw new UnauthorizedException(e);
         }
       }
     }

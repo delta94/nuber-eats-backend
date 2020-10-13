@@ -45,6 +45,7 @@ console.log(process.env.ENV);
     }),
     GraphQLModule.forRoot({
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      context: ({ req }) => ({ req }),
     }),
     JwtModule.forRoot({
       privateKey: process.env.PRIVATE_KEY,
