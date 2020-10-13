@@ -11,6 +11,7 @@ import { CommonModule } from './common/common.module';
 import { User } from './users/entities/user.entity';
 import { JwtModule } from './jwt/jwt.module';
 import { JwtMiddleware } from './jwt/jwt.middleware';
+import { AuthModule } from './auth/auth.module';
 
 console.log(process.env.ENV);
 
@@ -52,6 +53,7 @@ console.log(process.env.ENV);
     }),
     UsersModule,
     CommonModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
