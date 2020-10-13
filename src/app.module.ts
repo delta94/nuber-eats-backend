@@ -7,6 +7,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
+import { Restaurant } from './restaurants/entities/restaurant.entity';
 
 console.log(process.env.ENV);
 
@@ -33,9 +34,9 @@ console.log(process.env.ENV);
         username: process.env.POSTGRES_USERNAME,
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DATABASE,
-        entities: [],
+        entities: [Restaurant],
         logging: true,
-        synchronize: true,
+        synchronize: process.env.ENV !== 'prod',
       }),
     }),
     GraphQLModule.forRoot({
