@@ -6,6 +6,7 @@ import { join } from 'path';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import * as Joi from 'joi';
 
 console.log(process.env.ENV);
 
@@ -15,6 +16,14 @@ console.log(process.env.ENV);
       isGlobal: true,
       envFilePath: process.env.ENV === 'dev' ? '.env.dev' : '.env.test',
       ignoreEnvFile: process.env.ENV === 'prod',
+      validationSchema: Joi.object({
+        ENV: Joi.string().valid('dev', 'prod'),
+        POSTGRES_HOST: Joi.string().required(),
+        POSTGRES_PORT: Joi.string().required(),
+        POSTGRES_USERNAME: Joi.string().required(),
+        POSTGRES_PASSWORD: Joi.string().required(),
+        POSTGRES_DATABASE: Joi.string().required(),
+      }),
     }),
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
