@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
+import { User } from './users/entities/user.entity';
 
 console.log(process.env.ENV);
 
@@ -35,7 +36,7 @@ console.log(process.env.ENV);
         username: process.env.POSTGRES_USERNAME,
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DATABASE,
-        entities: [],
+        entities: [User],
         logging: true,
         synchronize: process.env.ENV !== 'prod',
       }),
